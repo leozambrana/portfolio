@@ -12,6 +12,7 @@
 body{
   background: linear-gradient(#2b1055, #7597de);
   min-height: 100vh;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -125,7 +126,9 @@ section img#mountains_front{
   font-size: 3.5em;
   margin-bottom: 10px;
   color: #fff;
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
 
 .sec h2, h3{
@@ -138,6 +141,7 @@ section img#mountains_front{
   display: flex;
   justify-content: center;
   margin: 40px 0px 20px 0;
+  width: 100%;
 }
 
 .sec img{
@@ -175,7 +179,7 @@ section img#mountains_front{
   cursor: pointer;
 }
 
-.form-area{
+#form-area{
   background-color: #c3d7e3;
   width: 300px;
   height: 300px;
@@ -267,4 +271,42 @@ footer{
   width: 40px;
   height: 40px;
   border: none;
+}
+
+@media (max-width: 768px) {
+  #text{
+    font-size: 3.5rem;
+  }
+
+  #grid-project {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  header{
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  header nav {
+    display: none;
+  }
+  
+  header nav.mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #grid-project {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #titulo{
+    font-size: 10vw;
+  }
 }

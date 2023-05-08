@@ -21,14 +21,44 @@ let contato = document.querySelector('#contact');
 
 window.addEventListener('scroll', function(){
   let value = this.window.scrollY;
-  stars.style.left = value * 0.5 + 'px'
-  moon.style.top = value + 'px'
-  mountains_behind.style.top = value + 'px'
-  mountains_front.style.top = value * 0 + 'px'
-  text.style.marginRight = value * 1.5 + 'px'
-  text.style.marginTop = value * 1.5 + 'px'
-  header.style.top = value * 0.5 + 'px'
-})
+  let width = this.window.innerWidth;
+  let stars_position = value * 0.5;
+  let moon_position = value;
+  let mountains_behind_position = value;
+  let mountains_front_position = value * 0;
+  let text_position_right = value * 1.5;
+  let text_position_top = value * 1.5;
+  let header_position = value * 0.5;
+  
+  // Verifica se a janela tem menos de 600px de largura para diminuir o efeito de parallax
+  if (width < 600) {
+    stars_position = value * 0.3;
+    moon_position = value * 0.5;
+    mountains_behind_position = value * 0.5;
+    mountains_front_position = value * 0;
+    text_position_right = value * 0.5;
+    text_position_top = value * 0.5;
+    header_position = value * 0.3;
+  }
+  
+  stars.style.left = stars_position + 'px';
+  moon.style.top = moon_position + 'px';
+  mountains_behind.style.top = mountains_behind_position + 'px';
+  mountains_front.style.top = mountains_front_position + 'px';
+  text.style.marginRight = text_position_right + 'px';
+  text.style.marginTop = text_position_top + 'px';
+  header.style.top = header_position + 'px';
+});
+
+$(window).on('load resize', function() {
+  var windowWidth = $(window).width();
+  if (windowWidth < 768) {
+    $('header nav').addClass('mobile');
+  } else {
+    $('header nav').removeClass('mobile');
+  }
+});
+
 
 botaoSobre.addEventListener('click', ()=>{
   const secaoAlvoTop = about.offsetTop;
